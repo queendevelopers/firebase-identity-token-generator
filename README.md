@@ -4,14 +4,14 @@ Generate firebase identity token to use firebase REST services using firebase se
 
 ### Prerequisites
 
-- [link Create service accounts](https://console.cloud.google.com/projectselector2/iam-admin/serviceaccounts)
-- [link Gather require information](https://developers.google.com/identity/protocols/oauth2/service-account#httprest)
-- [link Update script](https://github.com/queendevelopers/firebase-identity-token-generator/blob/master/firebase-identity-token-generator)
+- [Create service accounts](https://console.cloud.google.com/projectselector2/iam-admin/serviceaccounts)
+- [Gather require information](https://developers.google.com/identity/protocols/oauth2/service-account#httprest)
+- [Update script](https://github.com/queendevelopers/firebase-identity-token-generator/blob/master/firebase-identity-token-generator)
 
 Ensure you have one of the following tools installed:
 
 - awk
-- jd
+- jq
 - sed
 
 
