@@ -10,9 +10,9 @@ Generate firebase identity token to use firebase REST services using firebase se
 
 Ensure you have one of the following tools installed:
 
-- awk
-- jq
-- sed
+- [awk](https://github.com/onetrueawk/awk)
+- [jq](https://github.com/jqlang/jq)
+- [sed](https://github.com/ainfosec/sed-tools)
 
 
 ### Installing
@@ -35,3 +35,5 @@ chmod +x firebase-identity-token-generator
 ./firebase-identity-token-generator
 ```
 
+connect in linkedin: [Queendevelopers](https://www.linkedin.com/in/queendevelopers/)
+send mail at: [applelappala@gmail.com]
