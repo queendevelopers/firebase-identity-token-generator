@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Author Name: Nikesh Maharjan
+# Description: Generate firebase identity token to use firebase services. For instance, getting oAuth token from firebase requires identity token to be passed. 
+# Repo: https://github.com/queendevelopers/firebase-identity-token-generator.git
+# Date Created: WED Apr 17 20:00:28 EDT 2024
+
 #HEADERS VARIABLES
 ALGORITHM="RS256"
 TYPE="JWT"
@@ -16,11 +21,9 @@ FIREBASE_SCOPE="FIREBASE_SCOPE"
 SERVICE_ACCOUNT_KEY_FILE="PATH_TO_YOUR_JSON"
 SERVICE_ACCOUNT_PRIVATE_KEY_PEM="/tmp/service-account-key.pem"
 
-
-#Extract private key from JSON and save it to a PEM file
-#Uncomment to choose preferred tool between awk, sed and jq to extract the value.
-# jq -r '.private_key' "$SERVICE_ACCOUNT_KEY_FILE" > "$SERVICE_ACCOUNT_PRIVATE_KEY_PEM"
+#Extract private key from JSON and save it to a PEM file. Uncomment to choose preferred tool between awk, sed and jq to extract the value.
 grep -o '"private_key":\s*"[^"]*"' "$SERVICE_ACCOUNT_KEY_FILE" | awk -F'"' '{gsub(/\\n/, "\n", $4); gsub(/\\/, "", $4); print $4}' | tr -d '\\"' > "$SERVICE_ACCOUNT_PRIVATE_KEY_PEM"
+# jq -r '.private_key' "$SERVICE_ACCOUNT_KEY_FILE" > "$SERVICE_ACCOUNT_PRIVATE_KEY_PEM"
 # grep -o '"private_key":\s*"[^"]*"' "$SERVICE_ACCOUNT_KEY_FILE" | sed 's/"private_key":\s*"//' | sed 's/\"//g' | sed 's/\\n/\'$'\n/g' > "$SERVICE_ACCOUNT_PRIVATE_KEY_PEM"
 
 header='{"alg":"RS256","typ":"JWT"}'
