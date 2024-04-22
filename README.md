@@ -1,5 +1,4 @@
-# Script Name
-
+# Firebase Identity Token Generator For Google oAuth2 Using Service Accounts - REST API Method
 Generate firebase identity token to use firebase REST services using firebase service accounts. For instance, getting oAuth token from firebase requires identity token to be passed.
 
 ### Prerequisites

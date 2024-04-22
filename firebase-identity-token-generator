@@ -16,9 +16,9 @@ EXPIRATION_TIME=$(( $(date '+%s') + 3600 ))
 AUDIENCE="https://oauth2.googleapis.com/token"
 
 #DEPENDENT VARIABLES
-FIREBASE_SERVICE_ACCOUNT_EMAIL="YOUR_FIREBASE_EMAIL_ADDRESS"
+FIREBASE_SERVICE_ACCOUNT_EMAIL="FIREBASE_SERVICE_ACCOUNT_EMAIL_ADDRESS_FROM_SERVICES_JSON"
 FIREBASE_SCOPE="FIREBASE_SCOPE"
-SERVICE_ACCOUNT_KEY_FILE="PATH_TO_YOUR_JSON"
+SERVICE_ACCOUNT_KEY_FILE="FILE_PATH_TO_FIREBASE_SERVICES_JSON"
 SERVICE_ACCOUNT_PRIVATE_KEY_PEM="/tmp/service-account-key.pem"
 
 #Extract private key from JSON and save it to a PEM file. Uncomment to choose preferred tool between awk, sed and jq to extract the value.
@@ -31,7 +31,7 @@ payload="{\"iss\":\"$FIREBASE_SERVICE_ACCOUNT_EMAIL\",\"scope\":\"$FIREBASE_SCOP
 base64_header=$(echo -n "$header" | openssl base64 | tr -d '=' | tr '/+' '_-' | tr -d '\n')
 base64_payload=$(echo -n "$payload" | openssl base64 | tr -d '=' | tr '/+' '_-' | tr -d '\n')
 header_payload="${base64_header}.${base64_payload}"
-signature=$(echo -n "$header_payload" | openssl dgst -sha256 -sign "$SERVICE_ACCOUNT_KEY_PEM" | openssl base64 | tr -d '=' | tr '/+' '_-' | tr -d '\n')
+signature=$(echo -n "$header_payload" | openssl dgst -sha256 -sign "$SERVICE_ACCOUNT_PRIVATE_KEY_PEM" | openssl base64 | tr -d '=' | tr '/+' '_-' | tr -d '\n')
 jwt_token="${header_payload}.${signature}"
 echo "$jwt_token" && rm "$SERVICE_ACCOUNT_KEY_PEM"
 
